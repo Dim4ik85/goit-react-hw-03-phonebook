@@ -57,6 +57,29 @@ export default class App extends Component {
             contact.name.toLowerCase().includes(filter.toLowerCase()),
         );
     };
+
+    componentDidMount() {
+        // console.log(prevState);
+        // console.log(this.state);
+
+        const contacts = localStorage.getItem('contacts');
+        const parsedContacts = JSON.parse(contacts);
+        
+        if (parsedContacts) {
+            this.setState({contacts: parsedContacts});
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log(prevState);
+        console.log(this.state.contacts);
+        
+        if (this.state.contacts !== prevState.contacts) {
+            console.log('Обновилось поле contacts');
+
+            localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+        }
+    }
   
     render() {
         const { contacts, filter } = this.state;
