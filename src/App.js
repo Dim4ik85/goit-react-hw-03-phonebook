@@ -90,17 +90,19 @@ export default class App extends Component {
                 <h1>Phonebook</h1>
                 <ContactForm onAddContact={this.addContact} /> 
                 {contacts.length > 0 && (
+                    <>
                 <h2>Contacts</h2>
-                )}
+                {/* )} */}
                  {contacts.length > 1 && (
                     <Filter
                         value={filter}
                         onChangeFilter={this.changeFilter} />
                 )}
-                {contacts.length > 0 && (
+                {/* {contacts.length > 0 && ( */}
                     <ContactList
                         contacts={visibleContacts}
                         onRemoveContact={this.removeContact}/>
+                    </>
                 )} 
             </Layout>
         );
